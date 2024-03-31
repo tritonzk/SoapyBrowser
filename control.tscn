@@ -1,0 +1,175 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0d8pvs6btq2u"]
+
+[ext_resource type="Script" path="res://scripts/GTR_data.gd" id="1_w4mu5"]
+[ext_resource type="Script" path="res://scripts/ItemList.gd" id="2_mn58u"]
+[ext_resource type="Script" path="res://scripts/UserPbInfo.gd" id="3_ubm1a"]
+[ext_resource type="Script" path="res://download_Popular.gd" id="4_vw7f7"]
+[ext_resource type="Script" path="res://scripts/test_json.gd" id="5_ib38u"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -528.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w4mu5")
+metadata/score_data = {}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.84615
+anchor_bottom = 1.17391
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Records" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Records"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UserFilterChoice" type="OptionButton" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 456.0
+offset_top = 225.0
+offset_right = 640.0
+offset_bottom = 257.0
+
+[node name="Reload" type="Button" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 1080.0
+offset_top = 225.0
+offset_right = 1141.0
+offset_bottom = 256.0
+text = "Reload
+"
+
+[node name="WrFilter" type="CheckButton" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 992.0
+offset_top = 225.0
+offset_right = 1066.0
+offset_bottom = 256.0
+text = "WR"
+
+[node name="PbFilter" type="CheckButton" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 920.0
+offset_top = 225.0
+offset_right = 989.0
+offset_bottom = 256.0
+text = "PB"
+
+[node name="Button" type="Button" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 576.0
+offset_top = 10.0
+offset_right = 712.0
+offset_bottom = 50.0
+text = "Go to player ID"
+
+[node name="PlayerIdInput" type="LineEdit" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 456.0
+offset_top = 10.0
+offset_right = 568.0
+offset_bottom = 50.0
+placeholder_text = "Player ID"
+
+[node name="MaxRecords" type="LineEdit" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 1000.0
+offset_top = 185.0
+offset_right = 1144.0
+offset_bottom = 217.0
+placeholder_text = "# of records"
+
+[node name="CheckBox2" type="CheckBox" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 456.0
+offset_top = 65.0
+offset_right = 480.0
+offset_bottom = 97.0
+
+[node name="CheckBox3" type="CheckBox" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 456.0
+offset_top = 97.0
+offset_right = 480.0
+offset_bottom = 129.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Records"]
+layout_mode = 2
+offset_left = 480.0
+offset_top = 41.0
+offset_right = 712.0
+offset_bottom = 64.0
+
+[node name="Button2" type="Button" parent="TabContainer/Records"]
+visible = false
+layout_mode = 2
+offset_left = 968.0
+offset_top = 10.0
+offset_right = 1144.0
+offset_bottom = 50.0
+text = "Download Popular"
+script = ExtResource("4_vw7f7")
+
+[node name="Button3" type="Button" parent="TabContainer/Records"]
+visible = false
+layout_mode = 2
+offset_left = 696.0
+offset_top = 81.0
+offset_right = 883.0
+offset_bottom = 118.0
+text = "create Json"
+script = ExtResource("5_ib38u")
+
+[node name="ScoreBoard" type="ItemList" parent="TabContainer/Records"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -704.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mn58u")
+
+[node name="UserPbInfo" type="ItemList" parent="TabContainer/Records"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 456.0
+offset_top = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ubm1a")
+
+[node name="Playlists" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TabContainer/Playlists"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 208.0
+offset_right = 744.0
+offset_bottom = 416.0
+text = "Playlists"
+
+[connection signal="ready" from="." to="TabContainer/Records/ScoreBoard" method="_on_control_ready"]
+[connection signal="request_ready" from="." to="TabContainer/Records/ScoreBoard" method="_on_control_request_ready"]
+[connection signal="item_clicked" from="TabContainer/Records/ScoreBoard" to="TabContainer/Records/UserPbInfo" method="_on_score_board_item_clicked"]
+[connection signal="request_user_records" from="TabContainer/Records/UserPbInfo" to="." method="_on_user_pb_info_request_user_records"]
