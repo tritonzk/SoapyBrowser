@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/GTR_data.gd" id="1_w4mu5"]
 [ext_resource type="Script" path="res://scripts/ItemList.gd" id="2_mn58u"]
 [ext_resource type="Script" path="res://scripts/UserPbInfo.gd" id="3_ubm1a"]
-[ext_resource type="Script" path="res://download_Popular.gd" id="4_vw7f7"]
+[ext_resource type="Script" path="res://scripts/download_Popular.gd" id="4_vw7f7"]
 [ext_resource type="Script" path="res://scripts/test_json.gd" id="5_ib38u"]
 
 [node name="Control" type="Control"]
