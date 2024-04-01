@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0d8pvs6btq2u"]
+[gd_scene load_steps=8 format=3 uid="uid://c0d8pvs6btq2u"]
 
 [ext_resource type="Script" path="res://scripts/GTR_data.gd" id="1_w4mu5"]
 [ext_resource type="Script" path="res://scripts/ItemList.gd" id="2_mn58u"]
 [ext_resource type="Script" path="res://scripts/UserPbInfo.gd" id="3_ubm1a"]
 [ext_resource type="Script" path="res://scripts/download_Popular.gd" id="4_vw7f7"]
 [ext_resource type="Script" path="res://scripts/test_json.gd" id="5_ib38u"]
+[ext_resource type="Texture2D" uid="uid://rswebe710ljs" path="res://caef6db866e7f4b06f4a63b17accad04.jpg" id="6_0h1u6"]
+[ext_resource type="Script" path="res://SelectedUser.gd" id="6_f34w5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -528.0
-offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w4mu5")
@@ -20,94 +20,14 @@ metadata/score_data = {}
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.84615
-anchor_bottom = 1.17391
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Records" type="TabBar" parent="TabContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Records"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
-[node name="UserFilterChoice" type="OptionButton" parent="TabContainer/Records"]
+[node name="Records" type="TabBar" parent="TabContainer"]
 layout_mode = 2
-offset_left = 456.0
-offset_top = 225.0
-offset_right = 640.0
-offset_bottom = 257.0
-
-[node name="Reload" type="Button" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 1080.0
-offset_top = 225.0
-offset_right = 1141.0
-offset_bottom = 256.0
-text = "Reload
-"
-
-[node name="WrFilter" type="CheckButton" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 992.0
-offset_top = 225.0
-offset_right = 1066.0
-offset_bottom = 256.0
-text = "WR"
-
-[node name="PbFilter" type="CheckButton" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 920.0
-offset_top = 225.0
-offset_right = 989.0
-offset_bottom = 256.0
-text = "PB"
-
-[node name="Button" type="Button" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 576.0
-offset_top = 10.0
-offset_right = 712.0
-offset_bottom = 50.0
-text = "Go to player ID"
-
-[node name="PlayerIdInput" type="LineEdit" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 456.0
-offset_top = 10.0
-offset_right = 568.0
-offset_bottom = 50.0
-placeholder_text = "Player ID"
-
-[node name="MaxRecords" type="LineEdit" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 1000.0
-offset_top = 185.0
-offset_right = 1144.0
-offset_bottom = 217.0
-placeholder_text = "# of records"
-
-[node name="CheckBox2" type="CheckBox" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 456.0
-offset_top = 65.0
-offset_right = 480.0
-offset_bottom = 97.0
-
-[node name="CheckBox3" type="CheckBox" parent="TabContainer/Records"]
-layout_mode = 2
-offset_left = 456.0
-offset_top = 97.0
-offset_right = 480.0
-offset_bottom = 129.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Records"]
 layout_mode = 2
@@ -116,7 +36,7 @@ offset_top = 41.0
 offset_right = 712.0
 offset_bottom = 64.0
 
-[node name="Button2" type="Button" parent="TabContainer/Records"]
+[node name="PopularDl" type="Button" parent="TabContainer/Records"]
 visible = false
 layout_mode = 2
 offset_left = 968.0
@@ -126,7 +46,7 @@ offset_bottom = 50.0
 text = "Download Popular"
 script = ExtResource("4_vw7f7")
 
-[node name="Button3" type="Button" parent="TabContainer/Records"]
+[node name="CreateJson" type="Button" parent="TabContainer/Records"]
 visible = false
 layout_mode = 2
 offset_left = 696.0
@@ -157,19 +77,480 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ubm1a")
 
+[node name="Container" type="Control" parent="TabContainer/Records"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -695.998
+offset_top = 9.0
+offset_right = -9.99768
+offset_bottom = 256.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Records/Container"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="MaxRecords" type="LineEdit" parent="TabContainer/Records/Container/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "# of records"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Records/Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="WrFilter" type="CheckButton" parent="TabContainer/Records/Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "WR"
+
+[node name="PbFilter" type="CheckButton" parent="TabContainer/Records/Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "PB"
+
+[node name="Reload" type="Button" parent="TabContainer/Records/Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Reload
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Records/Container"]
+layout_mode = 1
+offset_right = 228.0
+offset_bottom = 39.0
+
+[node name="PlayerIdInput" type="LineEdit" parent="TabContainer/Records/Container/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "Player ID"
+
+[node name="PlayerId" type="Button" parent="TabContainer/Records/Container/HBoxContainer"]
+layout_mode = 2
+text = "Go to player ID"
+
+[node name="SelectedUser" type="RichTextLabel" parent="TabContainer/Records/Container"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 149.0
+offset_right = 457.0
+offset_bottom = 244.0
+script = ExtResource("6_f34w5")
+
 [node name="Playlists" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TabContainer/Playlists"]
+[node name="Control" type="Control" parent="TabContainer/Playlists"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/Playlists"]
+visible = false
 layout_mode = 0
-offset_left = 400.0
-offset_top = 208.0
-offset_right = 744.0
-offset_bottom = 416.0
-text = "Playlists"
+offset_left = 957.0
+offset_top = 41.0
+offset_right = 1137.0
+offset_bottom = 80.0
+text = "Amount of tracks"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Playlists"]
+visible = false
+layout_mode = 2
+offset_left = 21.0
+offset_top = 46.0
+offset_right = 234.0
+offset_bottom = 79.0
+item_count = 7
+popup/item_0/text = "Random"
+popup/item_0/id = 0
+popup/item_1/text = "Workshop ID"
+popup/item_1/id = 1
+popup/item_2/text = "Steam User"
+popup/item_2/id = 2
+popup/item_3/text = "Search Steam Workshop"
+popup/item_3/id = 3
+popup/item_4/text = "GTR Hot"
+popup/item_4/id = 4
+popup/item_5/text = "GTR Popular"
+popup/item_5/id = 5
+popup/item_6/text = "GTR Top Points"
+popup/item_6/id = 6
+
+[node name="PlaylistContainer" type="TabContainer" parent="TabContainer/Playlists"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 41.0
+offset_right = 1067.0
+offset_bottom = 330.0
+theme_override_constants/side_margin = 0
+current_tab = 4
+
+[node name="Random" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TabContainer/Playlists/PlaylistContainer/Random"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Random/Control"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 11.0
+offset_right = 862.0
+offset_bottom = 68.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Download random tracks from Zworpshop API by @Thundernerd"
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/Playlists/PlaylistContainer/Random/Control"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 113.0
+offset_right = 572.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0.239216, 0.462745, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.552941, 0.552941, 0.552941, 0.568627)
+theme_override_font_sizes/font_size = 23
+placeholder_text = "amount of tracks"
+
+[node name="Workshop ID" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer"]
+visible = false
+custom_minimum_size = Vector2(700, 250)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Workshop ID"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 11.0
+offset_right = 683.0
+offset_bottom = 137.0
+text = "Enter Workshop ID from steam workshop url
+Example: https://steamcommunity.com/sharedfiles/filedetails/?id=2804222316
+Enter the number after \"id=\" below."
+
+[node name="WorkshopIdInput" type="TextEdit" parent="TabContainer/Playlists/PlaylistContainer/Workshop ID"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 113.0
+offset_right = 572.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0.239216, 0.462745, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.552941, 0.552941, 0.552941, 0.568627)
+theme_override_font_sizes/font_size = 23
+placeholder_text = "Workshop ID"
+
+[node name="Steam User" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer"]
+visible = false
+layout_mode = 2
+
+[node name="SteamUserLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Steam User"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 6.0
+offset_right = 949.0
+offset_bottom = 104.0
+text = "Add all tracks from a specific Steam user. Currently there are several options. I am working on a search function for users that would make this a bit easier."
+
+[node name="SteamUserTabs" type="TabContainer" parent="TabContainer/Playlists/PlaylistContainer/Steam User"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 70.0
+offset_right = 940.0
+offset_bottom = 235.0
+
+[node name="Exact name" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer/Steam User/SteamUserTabs"]
+layout_mode = 2
+
+[node name="exactNameLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Steam User/SteamUserTabs/Exact name"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 583.0
+offset_bottom = 45.0
+text = "If you know the exact name of the user, enter it down here."
+
+[node name="WorkshopIdInput2" type="TextEdit" parent="TabContainer/Playlists/PlaylistContainer/Steam User/SteamUserTabs/Exact name"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 46.0
+offset_right = 411.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0.239216, 0.462745, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.552941, 0.552941, 0.552941, 0.568627)
+theme_override_font_sizes/font_size = 23
+placeholder_text = "Enter Username"
+
+[node name="Extract users tracks from workshop ID" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer/Steam User/SteamUserTabs"]
+visible = false
+layout_mode = 2
+
+[node name="Search Workshop" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 574.0
+offset_bottom = 61.0
+text = "Make a playlist from the first 30 results of a steam workshop search."
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 57.0
+offset_right = 798.0
+offset_bottom = 231.0
+current_tab = 1
+
+[node name="Popular and Playtime" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="labelSearch" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Popular and Playtime"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 147.0
+offset_bottom = 31.0
+text = "Search:"
+
+[node name="labelDaterange" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Popular and Playtime"]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 7.0
+offset_right = 451.0
+offset_bottom = 31.0
+text = "Date range:"
+
+[node name="optionsSearch" type="OptionButton" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Popular and Playtime"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 6.0
+offset_right = 265.0
+offset_bottom = 37.0
+item_count = 2
+popup/item_0/text = "Popular"
+popup/item_0/id = 0
+popup/item_1/text = "Playtime"
+popup/item_1/id = 1
+
+[node name="OptionsDaterange" type="OptionButton" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Popular and Playtime"]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 8.0
+offset_right = 623.0
+offset_bottom = 39.0
+item_count = 6
+popup/item_0/text = "All Time"
+popup/item_0/id = 0
+popup/item_1/text = "One Year"
+popup/item_1/id = 1
+popup/item_2/text = "Six Months"
+popup/item_2/id = 2
+popup/item_3/text = "Three Months"
+popup/item_3/id = 3
+popup/item_4/text = "One Week"
+popup/item_4/id = 4
+popup/item_5/text = "Today"
+popup/item_5/id = 5
+
+[node name="Searchterminput" type="TextEdit" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Popular and Playtime"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 44.0
+offset_right = 637.0
+offset_bottom = 76.0
+placeholder_text = "Input Search terms here"
+
+[node name="Other" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Other"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 9.0
+offset_right = 276.0
+offset_bottom = 42.0
+item_count = 3
+popup/item_0/text = "Recent"
+popup/item_0/id = 0
+popup/item_1/text = "Last Updated"
+popup/item_1/id = 1
+popup/item_2/text = "Most Subscribed"
+popup/item_2/id = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Other"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 107.0
+offset_bottom = 50.0
+text = "Search:"
+
+[node name="Searchterminput2" type="TextEdit" parent="TabContainer/Playlists/PlaylistContainer/Search Workshop/TabContainer/Other"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 44.0
+offset_right = 637.0
+offset_bottom = 76.0
+placeholder_text = "Input Search terms here"
+
+[node name="GTR Playlists" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer"]
+layout_mode = 2
+
+[node name="gtrlabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 14.0
+offset_right = 442.0
+offset_bottom = 54.0
+text = "Download playlists from @Thundernerd GTR API"
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 56.0
+offset_right = 746.0
+offset_bottom = 208.0
+current_tab = 1
+
+[node name="Popular and Hot" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PopularAndHotGtr" type="OptionButton" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists/TabContainer/Popular and Hot"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 28.0
+offset_right = 391.0
+offset_bottom = 59.0
+item_count = 3
+popup/item_0/text = "Popular"
+popup/item_0/id = 0
+popup/item_1/text = "Hot"
+popup/item_1/id = 1
+popup/item_2/text = "Highest points"
+popup/item_2/id = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists/TabContainer/Popular and Hot"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 28.0
+offset_right = 147.0
+offset_bottom = 59.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Choose:"
+
+[node name="Points" type="TabBar" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists/TabContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists/TabContainer/Points"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 10.0
+offset_right = 129.0
+offset_bottom = 50.0
+text = "High or Low"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists/TabContainer/Points"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 7.0
+offset_right = 222.0
+offset_bottom = 38.0
+item_count = 2
+popup/item_0/text = "High"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/Playlists/PlaylistContainer/GTR Playlists/TabContainer/Points"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 46.0
+offset_right = 195.0
+offset_bottom = 85.0
+placeholder_text = "Amount of tracks"
+
+[node name="CreatePlaylist" type="Button" parent="TabContainer/Playlists"]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 450.0
+offset_right = 1087.0
+offset_bottom = 525.0
+theme_override_colors/font_color = Color(0.776471, 0.305882, 0, 1)
+theme_override_colors/font_outline_color = Color(0.333333, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 41
+text = "Create Playlist"
+
+[node name="Playlist_data" type="Control" parent="TabContainer/Playlists"]
+anchors_preset = 0
+offset_left = 122.0
+offset_top = 455.0
+offset_right = 469.0
+offset_bottom = 558.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Playlists/Playlist_data"]
+layout_mode = 1
+offset_right = 307.0
+offset_bottom = 75.0
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/Playlists/Playlist_data/VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+placeholder_text = "Playlist Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Playlists/Playlist_data/VBoxContainer"]
+layout_mode = 2
+
+[node name="Time" type="TextEdit" parent="TabContainer/Playlists/Playlist_data/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Round time in seconds"
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/Playlists/Playlist_data/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Shuffle"
+
+[node name="Node2D" type="Node2D" parent="TabContainer/Playlists"]
+position = Vector2(187, 323)
+scale = Vector2(0.19, 0.19)
+
+[node name="polygon" type="Polygon2D" parent="TabContainer/Playlists/Node2D"]
+texture = ExtResource("6_0h1u6")
+polygon = PackedVector2Array(137, 286, 364, 514, 593, 286, 539, 233, 365, 408, 189, 233)
+
+[node name="Node2D2" type="Node2D" parent="TabContainer/Playlists"]
+position = Vector2(442, 550)
+rotation = -1.5708
+scale = Vector2(0.19, 0.19)
+
+[node name="polygon" type="Polygon2D" parent="TabContainer/Playlists/Node2D2"]
+scale = Vector2(0.85, 1.565)
+texture = ExtResource("6_0h1u6")
+polygon = PackedVector2Array(137, 286, 364, 514, 593, 286, 539, 233, 365, 408, 189, 233)
 
 [connection signal="ready" from="." to="TabContainer/Records/ScoreBoard" method="_on_control_ready"]
 [connection signal="request_ready" from="." to="TabContainer/Records/ScoreBoard" method="_on_control_request_ready"]
 [connection signal="item_clicked" from="TabContainer/Records/ScoreBoard" to="TabContainer/Records/UserPbInfo" method="_on_score_board_item_clicked"]
+[connection signal="item_clicked" from="TabContainer/Records/ScoreBoard" to="TabContainer/Records/Container/SelectedUser" method="_on_score_board_item_clicked"]
 [connection signal="request_user_records" from="TabContainer/Records/UserPbInfo" to="." method="_on_user_pb_info_request_user_records"]

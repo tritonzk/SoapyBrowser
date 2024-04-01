@@ -1,16 +1,11 @@
-extends ItemList
+extends RichTextLabel
 
-@onready var items = ItemList.new()
-@onready var score_node = get_node("../ScoreBoard")
+@onready var score_node = get_node("../../ScoreBoard")
 @onready var file = "user://items.json"
-
-signal request_user_records
+@onready var labl = $"."
 
 func _ready():
 	pass
-
-# check selected user from scoreboard
-# call gtr api for trackdata (recent, highest pbs, wrs, most points)
 
 func _on_score_board_item_clicked(index, at_position, mouse_button_index):
 	if mouse_button_index == 1:
@@ -26,8 +21,7 @@ func _on_score_board_item_clicked(index, at_position, mouse_button_index):
 		for x in scores["rankings"]:
 			if x["position"] == index+1:
 				print(x["user"])
-
-
-
-func _on_tab_bar_tab_button_pressed(tab):
-	pass # Replace with function body.
+				labl.clear()
+				labl.add_text(str(x["user"]["id"]))
+				labl.add_text(": ")
+				labl.add_text(str(x["user"]["steamName"]))
